@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useAppContext } from "../context/AppContext";
+import { headerList } from "../utils/helps";
 import { AlbaLogo1 } from "../utils/icons";
 
 function Header() {
@@ -11,17 +12,19 @@ function Header() {
 
   return (
     <Wrapper>
-      <Link to="/">
-      <img className="header__logo" src={AlbaLogo1} alt="alba-logo" />
+      <Link to="/" className="header__link">
+        <img className="header__logo" src={AlbaLogo1} alt="alba-logo" />
       </Link>
       {isLoggedIn && (
         <ul className="header__center">
-          <li>hello</li>
-          <li>hello</li>
-          <li>hello</li>
-          <li>hello</li>
-          <li>hello</li>
-          <li>hello</li>
+          {headerList.map((item) => {
+            return (
+              <li key={item.id} className="header__list">
+                {item.icons}
+                <h3>{item.text}</h3>
+              </li>
+            );
+          })}
         </ul>
       )}
       <div className="header__btn">
@@ -42,15 +45,24 @@ const Wrapper = styled.header`
   align-items: center;
   grid-template-columns: auto 1fr auto;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
-  .header__logo {
-    cursor: pointer;
-    height: 2rem;
+  .header__link {
+    display: flex;
+    align-items: center;
+    .header__logo {
+      cursor: pointer;
+      height: 2rem;
+    }
   }
   .header__center {
     display: flex;
     font-size: 1.6rem;
     gap: 2rem;
     justify-content: center;
+    .header__list {
+      display: flex;
+      column-gap: 1rem;
+      text-transform: capitalize;
+    }
   }
   .header__btn {
     margin-left: auto;
@@ -90,7 +102,7 @@ const Wrapper = styled.header`
       background: #f0850c;
     }
     .header__logo {
-      height: 1.6rem;
+      height: 2rem;
     }
     .header__btn {
       img {

@@ -1,3 +1,8 @@
+import {BiHome, BiHomeAlt} from "react-icons/bi";
+
+export {BiHomeAlt};
+
+
 export const Provinceslist = [
   "서울특별시",
   "인천",
@@ -36,3 +41,9 @@ export const list = [
     author:"스티브 잡스"
   },
 ];
+
+export const headerList = [
+  {id:1,text:"Home",icons:<BiHome /> ,path:"/"},
+  {id:2,text:"dream",icons:<BiHome /> ,path:"/dream"},
+  {id:3,text:"shop",icons:<BiHome /> ,path:"/shop"},
+]
