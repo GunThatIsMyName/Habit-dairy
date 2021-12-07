@@ -5,6 +5,8 @@ import Home from "./page/Home";
 import Loader from "./componets/Loader";
 import Login from "./page/Login";
 import { useAppContext } from "./context/AppContext";
+import Story from "./page/Story";
+import Feed from "./page/Feed";
 
 function App() {
   const {loginLoading,user}=useAppContext();
@@ -18,6 +20,8 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={isLoggedIn ? <Home /> : <Login />} />
+        <Route path="/story" element={<Story />} />
+        <Route path="/feed" element={<Feed />} />
       </Routes>
     </BrowserRouter>
   );

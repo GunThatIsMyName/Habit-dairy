@@ -47,7 +47,6 @@ const AppProvider=({children})=>{
         return ()=>checkLoginStatus();
     },[])
 
-    console.log(state,"all state")
     return (
         <AppContext.Provider value={{...state,handleLogin,handleLogout,handleUser}}>
             {children}

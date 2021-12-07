@@ -12,11 +12,11 @@ function Hero() {
                 <div className="hero__column">
                     <h1>꿈을 위한 커뮤니티</h1>
                     <ul className="hero__box">
-                        <Link to="/" className="hero__item">
+                        <Link to="/story" className="hero__item">
                             <span>내꿈 만들러 가기</span>
                             <BsChevronCompactRight />
                         </Link>
-                        <Link to="/" className="hero__item">
+                        <Link to="/feed" className="hero__item">
                             <span>세상 모든 꿈 보러 가기</span>
                             <BsChevronCompactRight />
                         </Link>

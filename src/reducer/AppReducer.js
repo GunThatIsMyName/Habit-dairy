@@ -10,7 +10,6 @@ export const initState = {
 };
 
 export const reducer = (state, action) => {
-  console.log(action.type,"타입!")
   switch (action.type) {
     case Login_Ac:
       const { displayName, email, photoURL } = action.payload;
