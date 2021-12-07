@@ -5,7 +5,7 @@ import { useUserContext } from "../context/UserContext";
 
 function Story() {
   const { user } = useAppContext();
-  const {storyChange,storySubmit}=useUserContext();
+  const {preview,story,storyChange,storySubmit}=useUserContext();
   return (
     <Wrapper>
       <form onSubmit={storySubmit} className="story">
@@ -44,20 +44,9 @@ function Story() {
           />
         </div>
         <h3 className="image__upload">사진 올리기</h3>
-        <input onChange={storyChange} multiple name="images" className="image__uploader" type="file" />
+        <input onChange={storyChange} accept="image/*" multiple name="images" className="image__uploader" type="file" />
         <div className="story__photo">
-          <img
-            src="https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-            alt="aaa"
-          />
-          <img
-            src="https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-            alt="aaa"
-          />
-          <img
-            src="https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-            alt="aaa"
-          />
+          {preview && <img src={preview} alt="preview-img" /> }
         </div>
         <div className="story__submit">
           <button type="submit" className="story__btn">나의 꿈 올리기.</button>
