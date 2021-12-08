@@ -4,12 +4,12 @@ import { firebaseDatabase } from "../firebase";
 import { storyCollection } from "../utils/helps";
 import FeedItem from "../componets/feed/FeedItem";
 import styled from "styled-components";
+import Empty from "../componets/Empty";
 
 function Feed() {
   const { user } = useAppContext();
   const [list, setList] = useState([]);
 
-  // firebase 데이터 베이스 가져오기
   const getFireDb = () => {
     firebaseDatabase
       .collection(storyCollection)
@@ -23,11 +23,9 @@ function Feed() {
       });
   };
 
-
-  // when component mount excute getFireDb function
   useEffect(() => {
     getFireDb();
-    return ()=>getFireDb();
+    return () => getFireDb();
   }, []);
 
   return (
@@ -36,15 +34,16 @@ function Feed() {
         list.map((item) => {
           return <FeedItem key={item.id} item={item} user={user} />;
         })}
+      {list.length<1 && <Empty />}
     </Wrapper>
   );
 }
 
 const Wrapper = styled.section`
   max-width: 1000px;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  grid-gap:2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 2rem;
   margin: auto;
   padding: 2rem;
   @media screen and (max-width: 991px) {
@@ -52,7 +51,7 @@ const Wrapper = styled.section`
     width: 100%;
   }
   @media screen and (max-width: 768px) {
-    grid-template-columns:1fr;
+    grid-template-columns: 1fr;
   }
 `;
 
