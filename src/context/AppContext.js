@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 import { firebaseAuth, googleProvider } from "../firebase";
 import { initState, reducer } from "../reducer/AppReducer";
-import { Loading_Login, Login_Ac,Logout_AC, offLoading } from "../utils/action";
+import { LOGIN_LOADING, LOGIN_BEGIN,LOGIN_LOGOUT, LOGIN_CHECK } from "../utils/action";
 
 const AppContext = createContext();
 
@@ -11,35 +11,31 @@ const AppProvider=({children})=>{
     const handleLogin = async()=>{
         try{
             const {user} = await firebaseAuth.signInWithPopup(googleProvider);
-            const {displayName,email,photoURL}=user;
-            dispatch({type:Login_Ac,payload:{displayName,email,photoURL}})
+            const {displayName,email,photoURL,uid}=user;
+            dispatch({type:LOGIN_BEGIN,payload:{displayName,email,photoURL,id:uid}})
         }catch(error){
             console.log(error)
         }
     }
 
     const checkLoginStatus=()=>{
-        dispatch({type:Loading_Login})
+        dispatch({type:LOGIN_LOADING})
         firebaseAuth.onAuthStateChanged(observer=>{
             if(observer){
-                const {displayName,email,photoURL}=observer;
-                dispatch({type:Login_Ac,payload:{displayName,email,photoURL}})
+                const {displayName,email,photoURL,uid}=observer;
+                dispatch({type:LOGIN_BEGIN,payload:{displayName,email,photoURL,id:uid}})
             }
-            dispatch({type:offLoading})
+            dispatch({type:LOGIN_CHECK})
         })
     }
 
-    const handleUser = ()=>{
-        console.log("@@@s")
-    }
     const handleLogout=async()=>{
         try{
             await firebaseAuth.signOut();
-            dispatch({Logout_AC})
+            dispatch({LOGIN_LOGOUT})
         }catch{
             console.log("error")
         }
-
     }
 
     useEffect(()=>{
@@ -48,7 +44,7 @@ const AppProvider=({children})=>{
     },[])
 
     return (
-        <AppContext.Provider value={{...state,handleLogin,handleLogout,handleUser}}>
+        <AppContext.Provider value={{...state,handleLogin,handleLogout}}>
             {children}
         </AppContext.Provider>
     )

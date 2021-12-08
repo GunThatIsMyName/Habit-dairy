@@ -1,5 +1,4 @@
-
-import {BrowserRouter,Routes,Route} from "react-router-dom"
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Header from "./componets/Header";
 import Home from "./page/Home";
 import Loader from "./componets/Loader";
@@ -9,19 +8,24 @@ import Story from "./page/Story";
 import Feed from "./page/Feed";
 
 function App() {
-  const {loginLoading,user}=useAppContext();
+  const { loginLoading, user } = useAppContext();
   const isLoggedIn = user && user.name !== "" && user.email !== "";
 
-  if(loginLoading){
-    return <Loader />
+  if (loginLoading) {
+    return <Loader />;
   }
   return (
     <BrowserRouter>
       <Header />
       <Routes>
         <Route path="/" element={isLoggedIn ? <Home /> : <Login />} />
-        <Route path="/story" element={<Story />} />
-        <Route path="/feed" element={<Feed />} />
+        {isLoggedIn && (
+          <>
+            <Route path="/story" element={<Story />} />
+            <Route path="/feed" element={<Feed />} />
+          </>
+        )}
+        <Route path="*" element={<Navigate replace to="/" />} />
       </Routes>
     </BrowserRouter>
   );

@@ -10,10 +10,16 @@ const firebaseApp = firebase.initializeApp({
   measurementId: process.env.REACT_APP_MESUREMENT_ID,
 });
 
-
 const firebaseAuth = firebaseApp.auth();
 const googleProvider = new firebase.auth.GoogleAuthProvider();
-const firebaseStorage = firebaseApp.storage()
-const firebaseDatabase =firebaseApp.firestore();
+const firebaseStorage = firebaseApp.storage();
+const firebaseDatabase = firebaseApp.firestore();
+const timestamps = firebase.firestore.FieldValue.serverTimestamp;
 
-export {firebaseAuth,googleProvider,firebaseStorage,firebaseDatabase};
+export {
+  firebaseAuth,
+  googleProvider,
+  firebaseStorage,
+  firebaseDatabase,
+  timestamps,
+};

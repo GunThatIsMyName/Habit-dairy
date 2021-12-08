@@ -1,16 +1,30 @@
 import React from "react";
+import { useNavigate } from "react-router";
 import styled from "styled-components";
 import { useAppContext } from "../context/AppContext";
 import { useUserContext } from "../context/UserContext";
 
 function Story() {
   const { user } = useAppContext();
-  const {preview,story,storyChange,storySubmit}=useUserContext();
+  const { preview, storyChange,story,editMode,storyEditSubmit, storySubmit ,storyEmpty} = useUserContext();
+  const navigate = useNavigate();
+
+
+  const handleSubmit = (e, user) => {
+    if(editMode){
+      storyEditSubmit(e,user);
+    }else{
+      storySubmit(e, user);
+    }
+    storyEmpty();
+    navigate("/feed");
+  };
+
   return (
     <Wrapper>
-      <form onSubmit={storySubmit} className="story">
+      <form onSubmit={(e) => handleSubmit(e, user)} className="story">
         <div className="story__title">
-          <h1>새로운 꿈 만들기</h1>
+          <h1>{editMode ?"꿈 수정 하기" :"새로운 꿈 만들기"}</h1>
           <p>사진을 업로드 해서 나의 꿈을 보여주세요. </p>
         </div>
         <div className="story__main">
@@ -23,7 +37,14 @@ function Story() {
           </div>
           <div className="main__title">
             <h3 className="title__name">제목</h3>
-            <input required onChange={storyChange} name="title" type="text" placeholder="꿈의 제목을 입력하세요." />
+            <input
+              required
+              onChange={storyChange}
+              value={story.title}
+              name="title"
+              type="text"
+              placeholder="꿈의 제목을 입력하세요."
+            />
           </div>
         </div>
         <div className="story__description">
@@ -35,21 +56,33 @@ function Story() {
             3. 당신이 더 배우고 싶은 것은 무엇인가? <br />
           </p>
           <textarea
-          required
-          name="description"
-          onChange={storyChange}
+            required
+            name="description"
+            onChange={storyChange}
+            value={story.description}
             maxLength={400}
             type="text"
             placeholder="꿈의 설명을 입력해 주세요  "
           />
         </div>
         <h3 className="image__upload">사진 올리기</h3>
-        <input onChange={storyChange} accept="image/*" multiple name="images" className="image__uploader" type="file" />
+        <input
+          onChange={storyChange}
+          required
+          disabled={editMode}
+          accept="image/*"
+          multiple
+          name="images"
+          className="image__uploader"
+          type="file"
+        />
         <div className="story__photo">
-          {preview && <img src={preview} alt="preview-img" /> }
+          {preview && <img src={preview} alt="preview-img" />}
         </div>
         <div className="story__submit">
-          <button type="submit" className="story__btn">나의 꿈 올리기.</button>
+          <button type="submit" className="story__btn">
+            {editMode ? "나의 꿈 수정 하기" : "나의 꿈 올리기."}
+          </button>
         </div>
       </form>
     </Wrapper>
@@ -58,7 +91,7 @@ function Story() {
 
 const Wrapper = styled.section`
   background: #f3f2ef;
-  min-height: 70vh;
+  min-height: 92vh;
   padding: 4rem;
   .story {
     max-width: 1000px;
@@ -75,6 +108,9 @@ const Wrapper = styled.section`
       }
     }
     .story__main {
+      border-bottom:1px solid #c1d1d9;
+      border-top:1px solid #c1d1d9;
+      padding:1rem 0;
       display: flex;
       gap: 2rem;
       margin: 2rem 0;
@@ -108,7 +144,7 @@ const Wrapper = styled.section`
     }
     .story__description {
       p {
-        font-size: 12px;
+        font-size: 15px;
         color: #8b949e;
       }
       textarea {
@@ -185,6 +221,9 @@ const Wrapper = styled.section`
         textarea {
           height: 5rem;
           font-size: 1rem;
+        }
+        p{
+          font-size:12px;
         }
       }
       .story__photo {

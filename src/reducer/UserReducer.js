@@ -1,8 +1,9 @@
 import {
-  storyChange_AC,
-  storyFileFail_AC,
-  storyFile_AC,
-  storyPreview_AC,
+  STORY_CHANGE,
+  STORY_EDIT,
+  STORY_FILE_EMPTY,
+  STORY_FILE_FAIL,
+  STORY_FILE_LOAD,
 } from "../utils/action";
 
 export const initState = {
@@ -11,21 +12,33 @@ export const initState = {
     description: "",
     file: null,
   },
+  editMode: false,
+  editId:null,
 };
 
 export const reducer = (state, action) => {
   switch (action.type) {
-    
-    case storyChange_AC:
+    case STORY_CHANGE:
       const { name, value } = action.payload;
       return {
         ...state,
         story: { ...state.story, [name]: value },
       };
-    case storyFile_AC:
+
+    case STORY_FILE_LOAD:
       return { ...state, story: { ...state.story, file: action.payload } };
-    case storyFileFail_AC:
-      console.log(action, "error");
+
+    case STORY_FILE_EMPTY:
+      return {
+        ...state,
+        editMode: false,
+        editId:null,
+        story: { title: "", description: "", file: null },
+      };
+    case STORY_EDIT:
+      const { title, description, url,id } = action.payload;
+      return { ...state, editId:id,story: { title, description, url }, editMode: true };
+    case STORY_FILE_FAIL:
       return { ...state };
     default:
       console.log("Error@!@#@#");

@@ -19,10 +19,10 @@ function Header() {
         <ul className="header__center">
           {headerList.map((item) => {
             return (
-              <li key={item.id} className="header__list">
+              <Link to={item.path} key={item.id} className="header__list">
                 {item.icons}
                 <h3>{item.text}</h3>
-              </li>
+              </Link>
             );
           })}
         </ul>
@@ -62,6 +62,10 @@ const Wrapper = styled.header`
       display: flex;
       column-gap: 1rem;
       text-transform: capitalize;
+      border-bottom:3px solid transparent;
+      &:hover{
+        border-bottom:3px solid #222;
+      }
     }
   }
   .header__btn {
@@ -100,6 +104,12 @@ const Wrapper = styled.header`
       width: 100%;
       height: 2rem;
       background: #f0850c;
+      z-index:100;
+      .header__list{
+        h3{
+          display:none;
+        }
+      }
     }
     .header__logo {
       height: 2rem;
