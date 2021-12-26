@@ -10,15 +10,15 @@ function Hero() {
       <section className="hero">
 
         <div className="hero__column">
-          <h1>꿈을 위한 커뮤니티</h1>
+          <h1>건강한 습관을 위한 <br /> 커뮤니티</h1>
           <ul className="hero__box">
             <Link to="/story" className="hero__item">
-              <span>내꿈 만들러 가기</span>
+              <span>나의 습관 만들러 가기</span>
               <BsChevronCompactRight />
             </Link>
 
             <Link to="/feed" className="hero__item">
-              <span>세상 모든 꿈 보러 가기</span>
+              <span>세상 모든 습관 보러 가기</span>
               <BsChevronCompactRight />
             </Link>
           </ul>
@@ -46,7 +46,7 @@ const Wrapper = styled.section`
       h1 {
         margin-top: 5rem;
         font-size: 3rem;
-        color: #f05a21;
+        color: #FBC43E;
       }
       .hero__box {
         margin: 5rem 0;

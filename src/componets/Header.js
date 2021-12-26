@@ -50,7 +50,9 @@ const Wrapper = styled.header`
     align-items: center;
     .header__logo {
       cursor: pointer;
-      height: 2rem;
+    height: 2rem;
+    margin-left: 2rem;
+    transform: scale(3.5);
     }
   }
   .header__center {
@@ -96,16 +98,20 @@ const Wrapper = styled.header`
     .header__center {
       position: fixed;
       bottom: 0;
+      left: 0;
       display: flex;
       color: #fff;
       justify-content: space-around;
       gap: 0;
-      left: 0;
       width: 100%;
-      height: 2rem;
-      background: #f0850c;
+      /* height: 2rem; */
+      background: #FAAA48;
       z-index:100;
       .header__list{
+        svg{
+          font-size:2rem;
+          margin:1rem;
+        }
         h3{
           display:none;
         }

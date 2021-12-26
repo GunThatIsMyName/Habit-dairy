@@ -37,7 +37,7 @@ export const reducer = (state, action) => {
     case LOGIN_LOGOUT:
       return {
         ...state,
-        user: { name: "", email: "", image: "" },
+        user: { ...state.user, name: "", email: "", image: "" ,id:""},
         loginLoading: false,
       };
 
@@ -45,5 +45,6 @@ export const reducer = (state, action) => {
       return { ...state, loginLoading: false };
     default:
       console.log("Error");
+      throw new Error("에러 입니다.");
   }
 };

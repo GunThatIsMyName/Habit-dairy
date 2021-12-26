@@ -24,8 +24,8 @@ function Story() {
     <Wrapper>
       <form onSubmit={(e) => handleSubmit(e, user)} className="story">
         <div className="story__title">
-          <h1>{editMode ?"꿈 수정 하기" :"새로운 꿈 만들기"}</h1>
-          <p>사진을 업로드 해서 나의 꿈을 보여주세요. </p>
+          <h1>{editMode ?"습관 수정 하기" :"새로운 습관 만들기"}</h1>
+          <p>사진을 업로드 해서 나의 소중한 열정을 보여주세요. </p>
         </div>
         <div className="story__main">
           <div className="main__owner">
@@ -43,7 +43,7 @@ function Story() {
               value={story.title}
               name="title"
               type="text"
-              placeholder="꿈의 제목을 입력하세요."
+              placeholder="습관의 이름을 입력하세요."
             />
           </div>
         </div>
@@ -62,7 +62,7 @@ function Story() {
             value={story.description}
             maxLength={400}
             type="text"
-            placeholder="꿈의 설명을 입력해 주세요  "
+            placeholder="습관을 좀더 구체화 해서 지속 가능하게 만들기!!  "
           />
         </div>
         <h3 className="image__upload">사진 올리기</h3>
@@ -81,7 +81,7 @@ function Story() {
         </div>
         <div className="story__submit">
           <button type="submit" className="story__btn">
-            {editMode ? "나의 꿈 수정 하기" : "나의 꿈 올리기."}
+            {editMode ? "나의 습관 수정 하기" : "나의 습관 올리기."}
           </button>
         </div>
       </form>
@@ -103,7 +103,6 @@ const Wrapper = styled.section`
         margin-bottom: 0.5rem;
       }
       p {
-        font-size: 12px;
         color: #8b949e;
       }
     }
@@ -144,7 +143,6 @@ const Wrapper = styled.section`
     }
     .story__description {
       p {
-        font-size: 15px;
         color: #8b949e;
       }
       textarea {
@@ -221,9 +219,6 @@ const Wrapper = styled.section`
         textarea {
           height: 5rem;
           font-size: 1rem;
-        }
-        p{
-          font-size:12px;
         }
       }
       .story__photo {

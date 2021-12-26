@@ -14,6 +14,7 @@ function App() {
   if (loginLoading) {
     return <Loader />;
   }
+  
   return (
     <BrowserRouter>
       <Header />

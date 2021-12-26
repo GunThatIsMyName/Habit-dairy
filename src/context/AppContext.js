@@ -14,7 +14,7 @@ const AppProvider=({children})=>{
             const {displayName,email,photoURL,uid}=user;
             dispatch({type:LOGIN_BEGIN,payload:{displayName,email,photoURL,id:uid}})
         }catch(error){
-            console.log(error)
+            console.log(error,"에러 입니다.")
         }
     }
 
@@ -32,7 +32,7 @@ const AppProvider=({children})=>{
     const handleLogout=async()=>{
         try{
             await firebaseAuth.signOut();
-            dispatch({LOGIN_LOGOUT})
+            dispatch({type:LOGIN_LOGOUT})
         }catch{
             console.log("error")
         }

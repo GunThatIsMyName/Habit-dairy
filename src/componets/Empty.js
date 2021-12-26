@@ -5,9 +5,9 @@ import styled from "styled-components";
 function Empty() {
   return (
     <Wrapper>
-      <h1>현재 등록된 꿈이 없습니다.</h1>
+      <h1>현재 등록된 습관이 없습니다.</h1>
       <button>
-        <Link to="/story">나의 꿈을 등록 하러가기.</Link>
+        <Link to="/story">지속 가능한 습관을 등록 하러가기.</Link>
       </button>
     </Wrapper>
   );

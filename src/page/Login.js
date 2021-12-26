@@ -11,23 +11,24 @@ function Login() {
         <img className="login__img-content" src={AlbaLogin} alt="alba-login" />
       </div>
       <div className="login__info">
-        <h1>모두의 꿈을 Respect</h1>
+        <h1>모두의 습관을 catch</h1>
         <h3>
-          가장 많은것을 이루는 자들은 아마 가장 많은 꿈을 꾸는 자들이다.
-          <br />- Stephen Leacock.
+        사람이 습관을 만들지만 나중엔 습관이 사람을 만든다.
+          <br />- 한줄 명언.
         </h3>
-        <button onClick={handleLogin}> 나의 꿈 펼치러 가기.</button>
+        <button onClick={handleLogin}> 나의 습관 만들러 가기.</button>
       </div>
     </Wrapper>
   );
 }
 
 const Wrapper = styled.section`
-  min-height: calc(100vh);
+  background-color: #efecec;
+  background-image: linear-gradient(315deg, #efecec 0%, #f2d9d7 74%);
+  min-height: calc(100vh - 3rem);
   position: absolute;
   top: 0;
   z-index: -1;
-  background: #f7f7f7;
   width: 100%;
   height: 100%;
   left: 0;
@@ -37,7 +38,7 @@ const Wrapper = styled.section`
   .login__img {
     text-align: center;
     img {
-      width: 20rem;
+      width: 35rem;
     }
   }
   .login__info {
@@ -69,7 +70,7 @@ const Wrapper = styled.section`
     }
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 991px) {
     display: flex;
     flex-direction: column;
     justify-content: center;

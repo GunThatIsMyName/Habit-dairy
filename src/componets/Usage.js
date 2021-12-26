@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 function Usage() {
@@ -14,13 +15,17 @@ function Usage() {
         <div className="usage__info">
           <h3>아름다운 날개를 펼쳐라</h3>
           <p>
-            내일은 더 낫겠지 그런 작은 희망 하나로 <br />
-            사랑할 수 있다면 힘든 1년도 버틸 거야 <br />
-            일어나 앞으로 나가 니가 가는 것이 길이다 <br />
+          다른 사람이 무엇을 하는지 신경 쓰지말라. <br />
+            더 나은 당신을 위해 노력하고 <br />
+            매일 당신의 기록을 깨뜨려라 <br />
             <br />
-            Bravo Bravo my life 나의 인생아 <br />
+            일어나서 다시 한번 부딫혀보자 <br />
           </p>
-          <button>자신감 만들러 가기</button>
+
+          <Link to="/story" className="hero__item">
+
+          <button>건강한 습관 만들기.</button>
+          </Link>
         </div>
       </section>
     </Wrapper>
