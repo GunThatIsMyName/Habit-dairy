@@ -2,9 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useAppContext } from "../context/AppContext";
 import { firebaseDatabase } from "../firebase";
 import { storyCollection } from "../utils/helps";
-import FeedItem from "../componets/feed/FeedItem";
+import { Empty, FeedItem } from "../componets";
 import styled from "styled-components";
-import Empty from "../componets/Empty";
 
 function Feed() {
   const { user } = useAppContext();
@@ -34,7 +33,7 @@ function Feed() {
         list.map((item) => {
           return <FeedItem key={item.id} item={item} user={user} />;
         })}
-      {list.length<1 && <Empty />}
+      {list.length < 1 && <Empty />}
     </Wrapper>
   );
 }

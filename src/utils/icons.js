@@ -1,5 +1,5 @@
-export const AlbaLogin = "images/astronaut.png";
+export const astronaut = "images/astronaut.png";
 
-export const AlbaLogo1 = "images/newDream.png";
+export const newHabit = "images/newDream.png";
 
 export const HeroImage = "images/kingkong.png";

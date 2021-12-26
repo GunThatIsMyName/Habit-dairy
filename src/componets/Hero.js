@@ -46,7 +46,7 @@ const Wrapper = styled.section`
       h1 {
         margin-top: 5rem;
         font-size: 3rem;
-        color: #FBC43E;
+        color: var(--color-lemon);
       }
       .hero__box {
         margin: 5rem 0;

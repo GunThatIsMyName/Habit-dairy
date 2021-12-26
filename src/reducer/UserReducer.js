@@ -13,7 +13,7 @@ export const initState = {
     file: null,
   },
   editMode: false,
-  editId:null,
+  editId: null,
 };
 
 export const reducer = (state, action) => {
@@ -32,12 +32,17 @@ export const reducer = (state, action) => {
       return {
         ...state,
         editMode: false,
-        editId:null,
+        editId: null,
         story: { title: "", description: "", file: null },
       };
     case STORY_EDIT:
-      const { title, description, url,id } = action.payload;
-      return { ...state, editId:id,story: { title, description, url }, editMode: true };
+      const { title, description, url, id } = action.payload;
+      return {
+        ...state,
+        editId: id,
+        story: { title, description, url },
+        editMode: true,
+      };
     case STORY_FILE_FAIL:
       return { ...state };
     default:

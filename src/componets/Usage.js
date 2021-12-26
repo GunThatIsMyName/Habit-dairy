@@ -15,7 +15,7 @@ function Usage() {
         <div className="usage__info">
           <h3>아름다운 날개를 펼쳐라</h3>
           <p>
-          다른 사람이 무엇을 하는지 신경 쓰지말라. <br />
+            다른 사람이 무엇을 하는지 신경 쓰지말라. <br />
             더 나은 당신을 위해 노력하고 <br />
             매일 당신의 기록을 깨뜨려라 <br />
             <br />
@@ -23,8 +23,7 @@ function Usage() {
           </p>
 
           <Link to="/story" className="hero__item">
-
-          <button>건강한 습관 만들기.</button>
+            <button>건강한 습관 만들기.</button>
           </Link>
         </div>
       </section>
@@ -33,7 +32,7 @@ function Usage() {
 }
 
 const Wrapper = styled.section`
-  background: #ffe7d5;
+  background: var(--color-pink);
   min-height: 60vh;
   padding: 5rem 2rem 10rem 2rem;
   .usage {
@@ -64,23 +63,23 @@ const Wrapper = styled.section`
       button {
         cursor: pointer;
         width: 50%;
-        border: 1px solid #f05a21;
+        border: 1px solid var(--color-red);
         border-radius: 5px;
         color: #f05a21;
         font-size: 1.4rem;
         transition: 0.3s linear;
         &:hover {
-          background: #f05a21;
+          background: var(--color-red);
           color: #fff;
         }
       }
     }
   }
   @media screen and (max-width: 991px) {
-    padding:5rem 1rem;
+    padding: 5rem 1rem;
     .usage {
       display: flex;
-      text-align:center;
+      text-align: center;
       flex-direction: column-reverse;
       .usage__image {
         text-align: center;
@@ -89,8 +88,8 @@ const Wrapper = styled.section`
         }
       }
       .usage__info {
-        h3{
-          font-size:1.5rem;
+        h3 {
+          font-size: 1.5rem;
         }
         button {
           font-size: 1.2rem;

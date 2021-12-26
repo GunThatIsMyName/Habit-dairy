@@ -1,11 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Header from "./componets/Header";
-import Home from "./page/Home";
-import Loader from "./componets/Loader";
-import Login from "./page/Login";
+import { Header, Loader } from "./componets";
 import { useAppContext } from "./context/AppContext";
-import Story from "./page/Story";
-import Feed from "./page/Feed";
+import { Feed, Home, Login, Story } from "./page";
 
 function App() {
   const { loginLoading, user } = useAppContext();

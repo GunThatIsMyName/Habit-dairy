@@ -1,11 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import Hero from "../componets/Hero";
-import Usage from "../componets/Usage";
+import { Hero, Usage } from "../componets";
+
+
 function Home() {
   return (
     <Wrapper>
-      <Hero />
+      <Hero  />
       <Usage />
     </Wrapper>
   );

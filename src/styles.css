@@ -155,4 +155,20 @@ button{
 	--font-roboto:"Roboto", sans-serif;
 	--font-outfit:"Outfit", sans-serif;
 	--font-nanum:"Nanum Pen Script", cursive;
+
+  --color-lemon:#FBC43E;
+  --color-pink:#ffe7d5;
+  --color-red:#f05a21;
+  --color-lightwhite:#efecec;
+  --color-orange:#f0850c;
+  --color-lightorange:#f08613;
+  --color-grey:#8b949e;
+  --color-ligthblue:#c1d1d9;
+  --color-almostwhite:#f0f2f5;
+  --color-almostgrey:#65676b;
+  --color-blue:#3c4856;
+
+  --color-white:#fff;
+
+
 }

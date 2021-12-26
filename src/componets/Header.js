@@ -1,9 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+
 import { useAppContext } from "../context/AppContext";
 import { headerList } from "../utils/helps";
-import { AlbaLogo1 } from "../utils/icons";
+import { newHabit} from "../utils/icons";
+
+import styled from "styled-components";
 
 function Header() {
   const { handleLogin, user, handleLogout } = useAppContext();
@@ -13,7 +15,7 @@ function Header() {
   return (
     <Wrapper>
       <Link to="/" className="header__link">
-        <img className="header__logo" src={AlbaLogo1} alt="alba-logo" />
+        <img className="header__logo" src={newHabit} alt="alba-logo" />
       </Link>
       {isLoggedIn && (
         <ul className="header__center">
@@ -104,7 +106,6 @@ const Wrapper = styled.header`
       justify-content: space-around;
       gap: 0;
       width: 100%;
-      /* height: 2rem; */
       background: #FAAA48;
       z-index:100;
       .header__list{

@@ -1,19 +1,26 @@
 import React from "react";
 import { useNavigate } from "react-router";
-import styled from "styled-components";
 import { useAppContext } from "../context/AppContext";
 import { useUserContext } from "../context/UserContext";
+import styled from "styled-components";
 
 function Story() {
-  const { user } = useAppContext();
-  const { preview, storyChange,story,editMode,storyEditSubmit, storySubmit ,storyEmpty} = useUserContext();
   const navigate = useNavigate();
-
+  const { user } = useAppContext();
+  const {
+    preview,
+    storyChange,
+    story,
+    editMode,
+    storyEditSubmit,
+    storySubmit,
+    storyEmpty,
+  } = useUserContext();
 
   const handleSubmit = (e, user) => {
-    if(editMode){
-      storyEditSubmit(e,user);
-    }else{
+    if (editMode) {
+      storyEditSubmit(e, user);
+    } else {
       storySubmit(e, user);
     }
     storyEmpty();
@@ -24,9 +31,10 @@ function Story() {
     <Wrapper>
       <form onSubmit={(e) => handleSubmit(e, user)} className="story">
         <div className="story__title">
-          <h1>{editMode ?"습관 수정 하기" :"새로운 습관 만들기"}</h1>
+          <h1>{editMode ? "습관 수정 하기" : "새로운 습관 만들기"}</h1>
           <p>사진을 업로드 해서 나의 소중한 열정을 보여주세요. </p>
         </div>
+
         <div className="story__main">
           <div className="main__owner">
             <h3 className="owner__name">작성자</h3>
@@ -47,6 +55,7 @@ function Story() {
             />
           </div>
         </div>
+
         <div className="story__description">
           <h3 className="description__name">설명</h3>
           <p>
@@ -65,6 +74,7 @@ function Story() {
             placeholder="습관을 좀더 구체화 해서 지속 가능하게 만들기!!  "
           />
         </div>
+
         <h3 className="image__upload">사진 올리기</h3>
         <input
           onChange={storyChange}
@@ -76,14 +86,17 @@ function Story() {
           className="image__uploader"
           type="file"
         />
+
         <div className="story__photo">
           {preview && <img src={preview} alt="preview-img" />}
         </div>
+
         <div className="story__submit">
           <button type="submit" className="story__btn">
             {editMode ? "나의 습관 수정 하기" : "나의 습관 올리기."}
           </button>
         </div>
+        
       </form>
     </Wrapper>
   );
@@ -103,13 +116,13 @@ const Wrapper = styled.section`
         margin-bottom: 0.5rem;
       }
       p {
-        color: #8b949e;
+        color: var(--color-grey);
       }
     }
     .story__main {
-      border-bottom:1px solid #c1d1d9;
-      border-top:1px solid #c1d1d9;
-      padding:1rem 0;
+      border-bottom: 1px solid var(--color-ligthblue);
+      border-top: 1px solid var(--color-ligthblue);
+      padding: 1rem 0;
       display: flex;
       gap: 2rem;
       margin: 2rem 0;
@@ -120,7 +133,7 @@ const Wrapper = styled.section`
         .owner__info {
           display: flex;
           align-items: center;
-          border: 1px solid #c1d1d9;
+          border: 1px solid var(--color-ligthblue);
           padding: 6px;
           border-radius: 5px;
           img {
@@ -143,7 +156,7 @@ const Wrapper = styled.section`
     }
     .story__description {
       p {
-        color: #8b949e;
+        color: var(--color-grey);
       }
       textarea {
         margin: 1rem;
@@ -178,8 +191,8 @@ const Wrapper = styled.section`
         width: 40%;
         border-radius: 5px;
         cursor: pointer;
-        background-color: #f08613;
-        color: #fff;
+        background-color: var(--color-lightorange);
+        color: var(--color-white);
         transition: 0.3s linear;
         &:hover {
           transform: scale(1.1);

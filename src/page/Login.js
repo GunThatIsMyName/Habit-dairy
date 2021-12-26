@@ -1,29 +1,35 @@
 import React from "react";
-import { AlbaLogin } from "../utils/icons";
-import styled from "styled-components";
+import { astronaut } from "../utils/icons";
 import { useAppContext } from "../context/AppContext";
+import styled from "styled-components";
 
 function Login() {
   const { handleLogin } = useAppContext();
+
   return (
     <Wrapper>
+
       <div className="login__img">
-        <img className="login__img-content" src={AlbaLogin} alt="alba-login" />
+        <img className="login__img-content" src={astronaut} alt="alba-login" />
       </div>
+
       <div className="login__info">
+
         <h1>모두의 습관을 catch</h1>
         <h3>
-        사람이 습관을 만들지만 나중엔 습관이 사람을 만든다.
+          사람이 습관을 만들지만 나중엔 습관이 사람을 만든다.
           <br />- 한줄 명언.
         </h3>
+
         <button onClick={handleLogin}> 나의 습관 만들러 가기.</button>
+
       </div>
     </Wrapper>
   );
 }
 
 const Wrapper = styled.section`
-  background-color: #efecec;
+  background-color: var(--color-lightwhite);
   background-image: linear-gradient(315deg, #efecec 0%, #f2d9d7 74%);
   min-height: calc(100vh - 3rem);
   position: absolute;
@@ -46,9 +52,9 @@ const Wrapper = styled.section`
     max-width: 500px;
     h1 {
       font-size: 3rem;
-      font-family: "Nanum Pen Script", cursive;
+      font-family: var(--font-nanum);
       font-weight: bold;
-      color: #f0850c;
+      color: var(--color-orange);
     }
     h3 {
       margin: 2rem 0;
@@ -57,14 +63,14 @@ const Wrapper = styled.section`
     }
     button {
       border-radius: 10px;
-      border: 3px solid #f0850c;
+      border: 3px solid var(--color-orange);
       background: transparent;
       font-size: 1.2rem;
       padding: 8px 16px;
       cursor: pointer;
       transition: 0.3s linear;
       &:hover {
-        background: #f0850c;
+        background: var(--color-orange);
         color: #fff;
       }
     }
